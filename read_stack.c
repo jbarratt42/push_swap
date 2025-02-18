@@ -6,16 +6,17 @@
 /*   By: jbarratt <jbarratt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:11:00 by jbarratt          #+#    #+#             */
-/*   Updated: 2025/02/10 14:07:34 by jbarratt         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:17:52 by jbarratt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	my_atoi_error(int *error)
+void	bail(t_stack p[2])
 {
-	*error = 1;
-	return (0);
+	write(1, "Error!\n", 7);
+	free_pair(p);
+	exit(1);
 }
 
 static int	my_atoi(char *str, int *error)
@@ -33,48 +34,18 @@ static int	my_atoi(char *str, int *error)
 	while (*str)
 	{
 		if (*str < '0' || *str > '9')
-			return (my_atoi_error(error));
+			*error = 1;
 		val = 10 * val + *str - '0';
 		str++;
 	}
 	if (neg)
 		val = -val;
 	if (val > INT_MAX || val < INT_MIN)
-		return (my_atoi_error(error));
+		*error = 1;
 	return ((int)val);
 }
 
-/*
-void	read_stack(char *arg, t_stack p[2])
-{
-	char 			*ptr;
-	const size_t	count = count_list(arg);
-	int				error;
-
-	init_pair(p, count);
-	if (!p[0].s)
-		return ;
-	error = 0;
-	p = arg;
-	while (*p)
-	{
-		while (*p && p != ' ')
-			p++;
-		*p = '\0';
-		my_atoi(arg, &error);
-		if (error)
-		{
-			free_pair(p);
-			return ;
-		}
-		p[0].s[p[0].size++] = n;
-		p++;
-		arg = p;
-	}
-}
-*/
-
-int	read_stack(size_t n, char **args, int *s)
+int	read_stack(size_t n, char **args, t_stack p[2])
 {
 	size_t	i;
 	int		error;
@@ -83,9 +54,9 @@ int	read_stack(size_t n, char **args, int *s)
 	i = 0;
 	while (i < n)
 	{
-		s[i] = my_atoi(args[n - 1 - i], &error);
-		if (error)
-			return (0);
+		s[i] = my_atoi(args[n - 1 - i]);
+		if (error || !is_unique(s), s[i])
+			bail(p);
 		i++;
 	}
 	return (i);
