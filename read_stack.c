@@ -6,7 +6,7 @@
 /*   By: jbarratt <jbarratt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:11:00 by jbarratt          #+#    #+#             */
-/*   Updated: 2025/02/18 16:17:52 by jbarratt         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:30:13 by jbarratt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,16 @@ static int	my_atoi(char *str, int *error)
 
 int	read_stack(size_t n, char **args, t_stack p[2])
 {
-	size_t	i;
 	int		error;
 
 	error = 0;
-	i = 0;
-	while (i < n)
+	p[0].size = 0;
+	while (p[0].size < n)
 	{
-		s[i] = my_atoi(args[n - 1 - i]);
-		if (error || !is_unique(s), s[i])
+		p[0].s[p[0].size] = my_atoi(args[n - 1 - p[0].size], &error);
+		if (error || !is_unique(p, p[0].s[p[0].size]))
 			bail(p);
-		i++;
+		p[0].size++;
 	}
-	return (i);
+	return (p[0].size);
 }

@@ -6,7 +6,7 @@
 /*   By: jbarratt <jbarratt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:28:13 by jbarratt          #+#    #+#             */
-/*   Updated: 2025/02/18 16:12:55 by jbarratt         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:27:38 by jbarratt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	init_pair(p, argc - 1);
 	if (!read_stack(argc - 1, &argv[1], &p[0]))
 		return (1);
-	p[0].size = argc - 1;
 	queue = push_swap(&p[0]);
 	while ((p[0].size <= 100 && queue_len(queue) > 700)
 		|| (p[0].size <= 500 && queue_len(queue) > 5500))

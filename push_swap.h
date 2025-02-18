@@ -6,7 +6,7 @@
 /*   By: jbarratt <jbarratt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 13:37:35 by jbarratt          #+#    #+#             */
-/*   Updated: 2025/02/18 14:49:44 by jbarratt         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:24:14 by jbarratt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void		rotate(t_stack *s, int rev);
 void		push(t_stack *p, int to_b);
 void		operate(t_opcode o, t_stack *p, int rev);
 /* ./read_stack.c */
-int			read_stack(size_t n, char **args, int *s);
+int			read_stack(size_t n, char **args, t_stack p[2]);
 /* ./queue.c */
 int			print_queue(t_opnode *n);
 size_t		queue_len(t_opnode *n);
